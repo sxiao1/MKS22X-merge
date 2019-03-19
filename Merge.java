@@ -28,21 +28,36 @@ public class Merge{
   }
   public static void insertionsort(int data[], int lo, int hi){
     int index = lo + 1;
-    int counter = 0;
-    for(int i = 0; i < data.length; i++){
-      counter ++;
+    while(index <= hi){
+      int count = index;
+      while(count > lo && data[index] < data[count - 1]){
+        count --;
+      }
+      shift(data, index, count);
+      index++;
     }
-    int temp = data[hi];
-    if(counter < hi){
-      data[counter] = hi;
+  }
+  public static void shift(int[] data, int oldNum, int newNum){
+    int temp = oldNum;
+    for(int i = oldNum; i > newNum; i--){
+      data[i] = data[i - 1];
     }
-    for(int x = 0; x < data.length; x++){
-      data[hi] = lo;
-      data[lo] = temp;
-      counter --;
-    }
+    data[newNum] = temp;
   }
   public static void mergesort(int[] data){
     int [] newdata = new int[data.length];
+    sortHelper(data, 0, data.length -1, newdata)
+  }
+  public static void sortHelper(int[] data, int low, int high, int[] newdata){
+    if(high - low <= 20){
+      insertionsort(data, low, high);
+    }
+    for(int i = low; i < high; i++){
+      newdata[i] = data[i];
+    }
+    int middle = (low + high) / 2;
+    sortHelper(newdata, low, middle, data);
+    sortHelper(newdata, middle + 1, high, data);
+    merge(data, low, middle, high, newdata);
   }
 }
