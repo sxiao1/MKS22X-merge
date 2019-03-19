@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void merge(int[]data, int low, int middle, int high, int temp[]){
@@ -22,6 +24,22 @@ public class Merge{
           num2++;
         }
       }
+    }
+  }
+  public static void insertionsort(int data[], int lo, int hi){
+    int index = lo + 1;
+    int counter = 0;
+    for(int i = 0; i < data.length; i++){
+      counter ++;
+    }
+    int temp = data[hi];
+    if(counter < hi){
+      data[counter] = hi;
+    }
+    for(int x = 0; x < data.length; x++){
+      data[hi] = lo;
+      data[lo] = temp;
+      counter --;
     }
   }
   public static void mergesort(int[] data){
