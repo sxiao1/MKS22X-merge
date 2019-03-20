@@ -46,7 +46,7 @@ public class Merge{
   }
   public static void mergesort(int[] data){
     int [] newdata = new int[data.length];
-    sortHelper(data, 0, data.length -1, newdata)
+    sortHelper(data, 0, data.length -1, newdata);
   }
   public static void sortHelper(int[] data, int low, int high, int[] newdata){
     if(high - low <= 20){
@@ -60,4 +60,7 @@ public class Merge{
     sortHelper(newdata, middle + 1, high, data);
     merge(data, low, middle, high, newdata);
   }
+  public static void main(String[]args){
+    }
+
 }
